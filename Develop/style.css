@@ -42,7 +42,7 @@ header {
   padding: 30px 40px;
 }
 
-.card-header::after {
+.card-body::before {
   content: " ";
   display: block;
   width: 100%;

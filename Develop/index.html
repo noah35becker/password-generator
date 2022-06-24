@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,15 +8,44 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="wrapper">
+      
       <header>
         <h1>Password Generator</h1>
       </header>
+
       <div class="card">
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
+
+        <div class="user-input">
+          
+          <h3>Include:</h3>
+          
+          <br/>          
+          
+          <div class="checkbox-wrapper">
+            <input type="checkbox" name="lowercase" id="wantsLowercase">
+            <label for="lowercase">Lowercase <span class="example">(a–z)</span></label>
+          </div>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" name="uppercase" id="wantsUppercase">
+            <label for="uppercase">Uppercase <span class="example">(A–Z)</span></label>
+          </div>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" name="numeric" id="wantsNumeric">
+            <label for="numeric">Numeric <span class="example">(0–9)</span></label>
+          </div>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" name="special" id="wantsSpecial">
+            <label for="special">Special <span class="example">(! # $ / & etc.)</span></label>
+          </div>
+
+        </div>
+
         <div class="card-body">
           <textarea
             readonly
@@ -24,11 +54,17 @@
             aria-label="Generated Password"
           ></textarea>
         </div>
+        
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
         </div>
+
       </div>
+
     </div>
+
     <script src="script.js"></script>
+
   </body>
+
 </html>
