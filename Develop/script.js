@@ -1,12 +1,39 @@
 
-//'NUMBER OF CHARACTERS' SLIDER
-  var slider = document.querySelector('#number-of-letters');
-  var sliderVal = document.querySelector('#slider-val');
-  sliderVal.innerHTML = slider.value; //displays inital slider value
+//'NUMBER OF CHARACTERS' SLIDER / NUMBER INPUT
+  var sliderItself = document.querySelector('#number-of-chars-slider');
+  var sliderNumVal = document.querySelector('#number-of-chars-number-input');
 
-  slider.oninput = function(){
-    sliderVal.innerHTML = this.value;
-  }
+  //When slider itself is adjusted, adjust the corresponding number value
+    sliderItself.oninput = function(){
+      sliderNumVal.value = this.value;
+    }
+
+  //When number value is adjusted, adjust the corresponding slider (only if number value is currently valid)
+    sliderNumVal.oninput = function(){
+      var finalVal = this.value;
+
+      if (finalVal == Math.round(finalVal) && finalVal >= 8 && finalVal <= 128)
+        sliderItself.value = finalVal;
+    }
+  
+  //After user completes number input, if number value is invalid,
+  //correct it to a valid value + adjust the slider accordingly
+    sliderNumVal.addEventListener('focusout', function(){
+      console.log('focusout is being called!');
+      
+      var finalVal = this.value;
+      
+      finalVal = Math.round(finalVal);
+      if (finalVal < 8)
+        finalVal = 8;
+      if (finalVal > 128)
+        finalVal = 128;
+
+      sliderNumVal.value = finalVal;
+      sliderItself.value = finalVal;
+    });
+
+
 
 
 //THE SET OF POSSIBLE CHARACTERS
@@ -17,6 +44,7 @@
     special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
   }
 
+
 //GENERATE PASSWORD FUNCTION
   function generatePassword(){
 
@@ -24,13 +52,13 @@
       var password;
       var eligibleChars;
       
-      var passwordLength = slider.value; //no validation required bc value retrieved from a slider
+      var passwordLength = sliderItself.value; //user validation is handled outside this function
       var useLowercase = document.querySelector('#lowercase').checked;
       var useUppercase = document.querySelector('#uppercase').checked;
       var useNumeric = document.querySelector('#numeric').checked;
       var useSpecial = document.querySelector('#special').checked;
 
-    
+
     //Inner functions
       function atLeastOneCharType(){
         if (useLowercase || useUppercase || useNumeric || useSpecial)
@@ -107,12 +135,11 @@
 
 
 
-
 //GET REFERENCES TO 'GENERATE PASSWORD' BUTTON
 var generateBtn = document.querySelector('#generate');
 
 //WRITE PASSWORD TO THE #password TEXTAREA
-function writePassword() {
+function writePassword(){
   
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
