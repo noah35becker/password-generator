@@ -97,7 +97,7 @@ header{
         -webkit-transition: 200ms;
         transition: background-color 200ms;
       }
-      .slider::-webkit-slider-thumb:hover{
+      .slider::-webkit-slider-thumb:hover, .slider:focus::-webkit-slider-thumb{
         background-color: var(--color-red);
       }
 
@@ -109,7 +109,7 @@ header{
         -webkit-transition: 200ms;
         transition: background-color 200ms;
       }
-      .slider::-moz-range-thumb:hover{
+      .slider::-moz-range-thumb:hover, .slider:focus::-moz-range-thumb{
         background-color: var(--color-red);
       }
 

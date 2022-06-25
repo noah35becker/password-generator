@@ -10,7 +10,17 @@
       sliderNumVal.value = this.value;
     }
 
-  //function for fixing user input for number of characters
+  //function: when number value is adjusted, at the moment that the corresponding slider is also adjusted,
+  //make its sliding circle 'flash'
+    function sliderFlash(){
+      sliderItself.focus();
+      setTimeout(function(){
+        sliderItself.blur();
+      }, '500');
+      
+    }
+
+  //function: fixing user input for number of characters
     function fixNumChars(){
       var value = sliderNumVal.value;
 
@@ -22,19 +32,22 @@
 
       sliderNumVal.value = value;
       sliderItself.value = value;
+      sliderFlash();
     }
 
   //When number value is adjusted, adjust the corresponding slider (only if number value is currently valid)
     sliderNumVal.oninput = function(){
       var finalVal = this.value;
 
-      if (finalVal == Math.round(finalVal) && finalVal >= 8 && finalVal <= 128)
+      if (finalVal == Math.round(finalVal) && finalVal >= 8 && finalVal <= 128){
         sliderItself.value = finalVal;
+        sliderFlash();
+      }
     }
   
   //When user is adjusting number value with the input field's arrows (whether clicking them or using up/down arrow keys),
   //prevent number value from going out of bounds
-    sliderNumVal.addEventListener('click',function(){
+    window.addEventListener('click',function(){
       fixNumChars();
     });
     window.addEventListener('keyup',function(e){
