@@ -1,6 +1,4 @@
 
-//////My code lies between the two long lines of slashes//////- Noah Becker////////////////////
-
 
 var slider = document.getElementById('number-of-letters');
 var sliderVal = document.getElementById('slider-val');
@@ -96,8 +94,6 @@ function generatePassword(){
 
     return password;
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
