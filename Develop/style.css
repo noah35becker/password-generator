@@ -95,8 +95,10 @@ header {
   color: var(--color-red);
 }
 
-
-.user-input h3{
+.user-input h2:first-child{
+  margin-top: 0;
+}
+.user-input h2{
   margin-bottom: 5px;
 }
 
