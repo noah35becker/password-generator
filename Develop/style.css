@@ -95,6 +95,7 @@ header {
   color: var(--color-red);
 }
 
+
 .user-input h3{
   margin-bottom: 5px;
 }
@@ -142,8 +143,13 @@ header {
   content: none;
 }
 
-.checkbox-wrapper input:checked + label::after{
+.user-input .checkbox-wrapper input:checked + label::after{
   content: "";
+}
+
+.user-input .checkbox-wrapper .example{
+  font-style: italic;
+  font-size: 90%;
 }
 
 
