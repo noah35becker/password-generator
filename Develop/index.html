@@ -25,7 +25,7 @@
 
             <div class = "slide-container">
               <input type="range" min="8" max="128" value="8" class="slider" id="number-of-letters">
-              <h4 class = "slider-val" id="slider-val">8</h4> <!--value set with Javascript-->
+              <h4 class = "slider-val" id="slider-val"></h4> <!--value set with Javascript-->
             </div>
           </div>
           
@@ -37,24 +37,24 @@
                 <div class = "spacer"></div>
                   
                 <div class="checkboxes">
-                  
+
                   <div class="checkbox-wrapper">
-                    <input type="checkbox" name="lowercase" id="lowercase">
+                    <input type="checkbox" name="lowercase" id="lowercase" checked>
                     <label for="lowercase">Lowercase <span class="example">(a–z)</span></label>
                   </div>
                   
                   <div class="checkbox-wrapper">
-                    <input type="checkbox" name="uppercase" id="uppercase">
+                    <input type="checkbox" name="uppercase" id="uppercase" checked>
                     <label for="uppercase">Uppercase <span class="example">(A–Z)</span></label>
                   </div>
 
                   <div class="checkbox-wrapper">
-                    <input type="checkbox" name="numeric" id="numeric">
+                    <input type="checkbox" name="numeric" id="numeric" checked>
                     <label for="numeric">Numeric <span class="example">(0–9)</span></label>
                   </div>
 
                   <div class="checkbox-wrapper">
-                    <input type="checkbox" name="special" id="special">
+                    <input type="checkbox" name="special" id="special" checked>
                     <label for="special">Special <span class="example">(! # $ / & etc.)</span></label>
                   </div>
 
@@ -73,7 +73,7 @@
             readonly
             id="password"
             placeholder="Your secure password"
-            aria-label="Generated Password"
+            aria-label="Generated password"
           ></textarea>
         </div>
         
