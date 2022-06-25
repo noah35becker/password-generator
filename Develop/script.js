@@ -2,10 +2,26 @@
 //'NUMBER OF CHARACTERS' SLIDER / NUMBER INPUT
   var sliderItself = document.querySelector('#number-of-chars-slider');
   var sliderNumVal = document.querySelector('#number-of-chars-number-input');
+  const minNumChars = sliderItself.getAttribute('min');
+  const maxNumChars = sliderItself.getAttribute('max');
 
   //When slider itself is adjusted, adjust the corresponding number value
     sliderItself.oninput = function(){
       sliderNumVal.value = this.value;
+    }
+
+  //function for fixing user input for number of characters
+    function fixNumChars(){
+      var value = sliderNumVal.value;
+
+      value = Math.round(value);
+      if (value < minNumChars)
+        value = minNumChars;
+      else if (value > maxNumChars) //the 'else' here is necessary for fixing a strange bug that comes up when clicking or using arrow keys to adjust number value
+        value = maxNumChars;
+
+      sliderNumVal.value = value;
+      sliderItself.value = value;
     }
 
   //When number value is adjusted, adjust the corresponding slider (only if number value is currently valid)
@@ -16,21 +32,31 @@
         sliderItself.value = finalVal;
     }
   
-  //After user completes number input, if number value is invalid,
+  //When user is adjusting number value with the input field's arrows (whether clicking them or using up/down arrow keys),
+  //prevent number value from going out of bounds
+    sliderNumVal.addEventListener('click',function(){
+      fixNumChars();
+    });
+    window.addEventListener('keyup',function(e){
+      if (sliderNumVal === this.document.activeElement)
+        switch (e.key){
+          case 'ArrowUp':
+            if (sliderNumVal.value > 128)
+              fixNumChars();
+            break;
+          case 'ArrowDown':
+            if (sliderNumVal.value < 8){
+              debugger;
+              fixNumChars();
+            }
+            break;
+        }
+    });
+
+  //After user completes number input by typing, if number value is invalid,
   //correct it to a valid value + adjust the slider accordingly
     sliderNumVal.addEventListener('focusout', function(){
-      console.log('focusout is being called!');
-      
-      var finalVal = this.value;
-      
-      finalVal = Math.round(finalVal);
-      if (finalVal < 8)
-        finalVal = 8;
-      if (finalVal > 128)
-        finalVal = 128;
-
-      sliderNumVal.value = finalVal;
-      sliderItself.value = finalVal;
+      fixNumChars();
     });
 
 
