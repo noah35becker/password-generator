@@ -1,6 +1,8 @@
 
 :root{
-  --color-red: hsl(360, 91%, 36%);
+  --color-red: rgb(175, 8, 8);
+  --color-red-lighter: rgba(217, 135, 139);
+  --slider-width: 75%;
 }
 
 *,
@@ -47,6 +49,51 @@ header {
   padding: 30px 40px;
 }
 
+
+.slider{
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--slider-width);
+  height: 15px;
+  border-radius: 15px;
+  outline: none;
+  background-color: lightgrey;
+  margin-top: 10px;
+}
+
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: var(--color-red-lighter);
+  cursor: pointer;
+  -webkit-transition: 200ms;
+  transition: background-color 200ms;
+}
+.slider::-webkit-slider-thumb:hover{
+  background-color: var(--color-red);
+}
+
+.slider::-moz-range-thumb{
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-red-lighter);
+  cursor: pointer;
+  -webkit-transition: 200ms;
+  transition: background-color 200ms;
+}
+.slider::-moz-range-thumb:hover{
+  background-color: var(--color-red);
+}
+
+.slider-val{
+  margin-top: 10px;
+  width: var(--slider-width);
+  text-align: center;
+  color: var(--color-red);
+}
 
 .user-input h3{
   margin-bottom: 5px;
