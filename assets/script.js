@@ -1,41 +1,51 @@
 
-//'NUMBER OF CHARACTERS' SLIDER / NUMBER INPUT
+//'NUMBER OF CHARACTERS' SLIDER/NUMBER INPUT
   var sliderItself = document.querySelector('#number-of-chars-slider');
   var sliderNumVal = document.querySelector('#number-of-chars-number-input');
-  const minNumChars = sliderItself.getAttribute('min');
-  const maxNumChars = sliderItself.getAttribute('max');
+  const minNumChars = parseInt(sliderItself.getAttribute('min'));
+  const maxNumChars = parseInt(sliderItself.getAttribute('max'));
 
-  //When slider itself is adjusted, adjust the corresponding number value
+  //When slider itself is adjusted, adjust the corresponding number value simultaneously
     sliderItself.oninput = function(){
       sliderNumVal.value = this.value;
-    }
+      sliderItself.blur();
+    };
 
-  //function: when number value is adjusted, at the moment that the corresponding slider is also adjusted,
-  //make its sliding circle 'flash'
+  //Function: When number value is adjusted, at the moment that the corresponding slider is also adjusted,
+  //make its circle 'flash'
     function sliderFlash(){
+      var activeElem = this.document.activeElement;
+
       sliderItself.focus();
-      setTimeout(function(){
-        sliderItself.blur();
-      }, '500');
+      setTimeout(
+        function(){
+          activeElem.focus();
+          sliderItself.blur();
+        },
+        '200')
+      ;
+    }
+
+  //Function: Fixing user input for number of characters
+    function fixNumCharsInput(){
+      var origValue = sliderNumVal.value;
+
+      var adjValue = Math.round(origValue);
+      if (adjValue < minNumChars)
+        adjValue = minNumChars;
+      if (adjValue > maxNumChars)
+        adjValue = maxNumChars;
+
+      if (!(adjValue == origValue))
+        sliderFlash();
       
+      
+      sliderNumVal.value = adjValue;
+      sliderItself.value = adjValue;
     }
 
-  //function: fixing user input for number of characters
-    function fixNumChars(){
-      var value = sliderNumVal.value;
-
-      value = Math.round(value);
-      if (value < minNumChars)
-        value = minNumChars;
-      else if (value > maxNumChars) //the 'else' here is necessary for fixing a strange bug that comes up when clicking or using arrow keys to adjust number value
-        value = maxNumChars;
-
-      sliderNumVal.value = value;
-      sliderItself.value = value;
-      sliderFlash();
-    }
-
-  //When number value is adjusted, adjust the corresponding slider (only if number value is currently valid)
+  //When number value is adjusted, adjust the corresponding slider SIMULTANEOUSLY
+  //(only if number value is currently valid)
     sliderNumVal.oninput = function(){
       var finalVal = this.value;
 
@@ -43,24 +53,25 @@
         sliderItself.value = finalVal;
         sliderFlash();
       }
-    }
+    };
   
   //When user is adjusting number value with the input field's arrows (whether clicking them or using up/down arrow keys),
   //prevent number value from going out of bounds
-    window.addEventListener('click',function(){
-      fixNumChars();
+    window.addEventListener('click',function(e){  
+      e = e || window.event;
+      if (e.target === sliderNumVal || e.srcElement === sliderNumVal)
+        fixNumCharsInput();
     });
     window.addEventListener('keyup',function(e){
       if (sliderNumVal === this.document.activeElement)
         switch (e.key){
           case 'ArrowUp':
             if (sliderNumVal.value > 128)
-              fixNumChars();
+              fixNumCharsInput();
             break;
           case 'ArrowDown':
             if (sliderNumVal.value < 8){
-              debugger;
-              fixNumChars();
+              fixNumCharsInput();
             }
             break;
         }
@@ -68,8 +79,8 @@
 
   //After user completes number input by typing, if number value is invalid,
   //correct it to a valid value + adjust the slider accordingly
-    sliderNumVal.addEventListener('focusout', function(){
-      fixNumChars();
+    sliderNumVal.addEventListener('blur', function(){
+      fixNumCharsInput();
     });
 
 
