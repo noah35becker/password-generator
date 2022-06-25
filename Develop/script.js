@@ -1,7 +1,7 @@
 
 
-var slider = document.getElementById('number-of-letters');
-var sliderVal = document.getElementById('slider-val');
+var slider = document.querySelector('#number-of-letters');
+var sliderVal = document.querySelector('#slider-val');
 sliderVal.innerHTML = slider.value; //displays inital slider value
 
 slider.oninput = function(){
