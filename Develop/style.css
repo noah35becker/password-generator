@@ -66,6 +66,11 @@ header{
     }
 
     /*Number of characters*/
+      .number-of-chars{
+        text-align: center;
+        margin-bottom: 25px;
+      }
+    
       .number-of-chars h2{
         margin-top: 0;
       }
@@ -110,34 +115,52 @@ header{
 
       .slider-val{
         margin-top: 10px;
-        width: var(--slider-width);
         text-align: center;
         color: var(--color-red);
+        margin-bottom: 0;
       }
     
+
     /*Types of characters*/
       .types-of-chars{
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
-      .types-of-chars input{
+      .types-of-chars h2{
+        text-align: center;
+        margin-top: 0;
+      }
+
+      .checkboxes-and-spacers{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;;
+      }
+
+      .checkboxes-and-spacers .spacer{
+        flex-basis: 1px;
+      }
+
+      .checkboxes{
+        flex-basis: fit-content;
+        flex-grow: 0;
+      }
+
+      .checkbox-wrapper input{
+        opacity: 0;
+        z-index: 1;
         position: relative;
         left: 5px;
       }
 
-      .types-of-chars .checkbox-wrapper input{
-        opacity: 0;
-        z-index: 1;
-      }
-
-      .types-of-chars .checkbox-wrapper label{
+      .checkbox-wrapper label{
         position: relative;
         left: 10px;
         margin: 10px;
         line-height: 1.8;
       }
 
-      .types-of-chars .checkbox-wrapper label::before{
+      .checkbox-wrapper label::before{
         content: "";
         height: 20px;
         width: 20px;
@@ -148,7 +171,7 @@ header{
         left: -40px;
       }
 
-      .types-of-chars .checkbox-wrapper label::after{
+      .checkbox-wrapper label::after{
         height: 7px;
         width: 17px;
         border-left: 2px solid var(--color-red);
@@ -159,15 +182,15 @@ header{
         transform: rotate(-58deg);
       }
 
-      .types-of-chars .checkbox-wrapper input + label::after{
+      .checkbox-wrapper input + label::after{
         content: none;
       }
 
-      .types-of-chars .checkbox-wrapper input:checked + label::after{
+      .checkbox-wrapper input:checked + label::after{
         content: "";
       }
 
-      .types-of-chars .checkbox-wrapper .example{
+      .checkbox-wrapper .example{
         font-style: italic;
         font-size: 90%;
       }
