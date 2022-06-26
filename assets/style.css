@@ -272,6 +272,7 @@ header{
 
   .copy-to-clipboard-btn{
     background-color: #4388f7;
+    text-align: center;
     padding: 5px 15px;
     font-size: 17px;
     margin: 0;

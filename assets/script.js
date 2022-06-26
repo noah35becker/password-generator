@@ -28,7 +28,7 @@
           sliderItself.blur();
           sliderNumVal.removeAttribute('style'); //REMOVE the <losing-focus> masking described above
         },
-        '200')
+        200)
       ;
     }
 
@@ -187,10 +187,11 @@
 
 
 
-//ADD GENERATEPASSWORD() TO BUTTON, WITH ERROR-CHECKING + STATS / BUTTON UPDATING
+//ADD GENERATEPASSWORD() TO GENERATE BUTTON,
+//INC. ERROR-CHECKING + STATS / BUTTON UPDATING
   var generateBtn = document.querySelector('#generate');
   var passwordText = document.querySelector('#password');
-  var password;
+  var password = '';
 
   function updateSupplements(){
     function charTypesString(){
@@ -231,3 +232,29 @@
   }
 
   generateBtn.addEventListener('click', writePassword);
+
+
+
+//COPY TO CLIPBOARD BUTTON
+  var copyBtn = document.querySelector('#copy-to-clipboard');
+  
+  copyBtn.addEventListener('click', function(){
+    var delay = 3000;
+    var duration = 1000;
+    var origBtnText = copyBtn.innerHTML;
+  
+    navigator.clipboard.writeText(password);
+    
+    copyBtn.style.width = window.getComputedStyle(copyBtn).getPropertyValue('width');
+    copyBtn.style.fontStyle = 'italic';
+    copyBtn.innerHTML = 'Copied!';
+    copyBtn.style.transition = 'color ' + duration + 'ms ease-in ' + delay + 'ms';
+    copyBtn.style.color = window.getComputedStyle(copyBtn).getPropertyValue('background-color');
+
+    setTimeout(
+      function(){
+        copyBtn.innerHTML = origBtnText;
+        copyBtn.removeAttribute('style');
+      },
+      delay + duration);
+  });
