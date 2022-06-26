@@ -28,6 +28,33 @@
     background-color: #f9fbfd;
   }
 
+  button[disabled]{
+    cursor: default;
+    background: #c0c7cf;
+  }
+
+
+/*UTILITY CLASSES*/
+  .btn{
+    border: none;
+    background-color: var(--color-red);
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .float-right{
+    float: right;
+  }
+
 
 /*Overall wrapper*/
   .wrapper{
@@ -225,27 +252,34 @@ header{
       height: 2px;
     }
 
+    #password{
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      display: block;
+      width: 100%;
+      padding-top: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 85px;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 2px dashed #c0c7cf;
+      border-radius: 6px;
+      resize: none;
+    }
+
     .card-footer::after{
       content: " ";
       display: block;
       clear: both;
     }
 
-  .btn{
-    border: none;
-    background-color: var(--color-red);
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-      0px;
-    color: hsl(0, 0%, 100%);
-    display: inline-block;
-    font-size: 22px;
-    line-height: 22px;
-    margin: 16px;
-    padding: 14px 34px;
-    text-align: center;
-    cursor: pointer;
-  }
+
+  
 
   
   /*Password stats + copy to clipboard button (.card-supplements)*/
@@ -282,78 +316,48 @@ header{
 
 
 
-button[disabled]{
-  cursor: default;
-  background: #c0c7cf;
-}
+/*MEDIA QUERIES FOR SCREENS OF DIFFERENT SIZES*/
+  @media screen and (max-width: 750px){
+    .card-supplements{
+      flex-wrap: wrap;
+      justify-content: center;
+      position: static;
+      height: auto;
+    }
 
-.float-right{
-  float: right;
-}
+    .pw-stats{
+      margin: 15px 0 0;
+      flex-basis: 100%;
+      text-align: center;
+    }
 
-#password{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
-}
+    .btn{
+      margin: 16px 0 0;
+      font-size: 1rem;
+    }
 
+    #generate{
+      padding: 10px 15px;
+      font-size: 1.05rem;
+    }
 
-@media screen and (max-width: 750px){
-  .card-supplements{
-    flex-wrap: wrap;
-    justify-content: center;
-    position: static;
-    height: auto;
+    #password{
+      font-size: 1rem;
+    }
+
   }
 
-  .pw-stats{
-    margin: 15px 0 0;
-    flex-basis: 100%;
-    text-align: center;
+
+  @media screen and (max-width: 500px){
+    .btn{
+      font-size: 0.8rem;
+    }
+
+    #generate{
+      font-size: 1rem;
+    }
+
+    #password{
+      padding-bottom: 100px;
+    }
   }
-
-  .btn{
-    margin: 16px 0 0;
-    font-size: 1rem;
-  }
-
-  #generate{
-    padding: 10px 15px;
-    font-size: 1.05rem;
-  }
-
-  #password{
-    font-size: 1rem;
-  }
-
-}
-
-
-@media screen and (max-width: 500px){
-  .btn{
-    font-size: 0.8rem;
-  }
-
-  #generate{
-    font-size: 1rem;
-  }
-
-  #password{
-    padding-bottom: 100px;
-  }
-}
