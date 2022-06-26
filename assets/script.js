@@ -1,9 +1,28 @@
 
-//'NUMBER OF CHARACTERS' SLIDER/NUMBER INPUT
+//GLOBAL VARIABLES
+  var password;
+
   var sliderItself = document.querySelector('#number-of-chars-slider');
   var sliderNumVal = document.querySelector('#number-of-chars-number-input');
   const minNumChars = parseInt(sliderItself.getAttribute('min'));
   const maxNumChars = parseInt(sliderItself.getAttribute('max'));
+
+  const CHARACTERS = {
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    numeric: '0123456789',
+    special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
+  }
+
+  var copyBtn = document.querySelector('#copy-to-clipboard');
+  var origCopyBtnText = copyBtn.innerHTML;
+
+  var generateBtn = document.querySelector('#generate');
+  var passwordText = document.querySelector('#password');
+
+
+
+//'NUMBER OF CHARACTERS' SLIDER/NUMBER INPUT
 
   //When slider itself is adjusted, adjust the corresponding number value simultaneously
     sliderItself.oninput = function(){
@@ -91,21 +110,10 @@
 
     
 //GENERATE PASSWORD FUNCTION
-
-  //The set of possible characters
-    const CHARACTERS = {
-      lowercase: 'abcdefghijklmnopqrstuvwxyz',
-      uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      numeric: '0123456789',
-      special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
-    }
-
-
-  //The function itself
   function generatePassword(){
 
     //Variables
-      var password;
+      var pw;
       var eligibleChars;
       
       var passwordLength = sliderItself.value;
@@ -150,9 +158,9 @@
 
       function allCharCategoriesPresent(){ 
         function checkAgainstBaseline(baseline){
-          for (i = 0; i < password.length; i++)
+          for (i = 0; i < pw.length; i++)
             for (c = 0; c < baseline.length; c++)
-              if (password.substring(i, i + 1) === baseline.substring(c, c + 1))
+              if (pw.substring(i, i + 1) === baseline.substring(c, c + 1))
                 return true;
 
           return false;
@@ -176,10 +184,10 @@
         eligibleChars = getEligibleChars();
         
         do
-          password = build();
+          pw = build();
         while (!allCharCategoriesPresent());
 
-        return password;
+        return pw;
       }
       
       return false;
@@ -187,12 +195,32 @@
 
 
 
-//ADD GENERATEPASSWORD() TO GENERATE BUTTON,
-//INC. ERROR-CHECKING + STATS / BUTTON UPDATING
-  var generateBtn = document.querySelector('#generate');
-  var passwordText = document.querySelector('#password');
-  var password = '';
+//COPY TO CLIPBOARD BUTTON
+  function copyBtnReset(){
+    copyBtn.innerHTML = origCopyBtnText;
+    copyBtn.removeAttribute('style');
+  }
 
+  copyBtn.addEventListener('click', function(){
+    var delay = 3000; //milliseconds
+    var duration = 1000; //milliseconds
+
+    navigator.clipboard.writeText(password);
+    
+    copyBtn.style.width = window.getComputedStyle(copyBtn).getPropertyValue('width');
+    copyBtn.style.fontStyle = 'italic';
+    copyBtn.innerHTML = 'Copied!';
+    copyBtn.style.transition = 'color ' + duration + 'ms ease-in ' + delay + 'ms';
+    copyBtn.style.color = window.getComputedStyle(copyBtn).getPropertyValue('background-color');
+    console.log(copyBtn.style.color);
+
+    setTimeout(copyBtnReset, delay + duration);
+  });
+
+
+
+//ADD GENERATEPASSWORD() TO GENERATE BUTTON,
+//INC. ERROR-CHECKING + DISPLAYING/UPDATING STATS AND COPY BUTTON
   function updateSupplements(){
     function charTypesString(){
       const charTypes = [];
@@ -216,7 +244,10 @@
     document.querySelector('.card-supplements').style.display = 'flex';
   }
 
+
   function writePassword(){
+    copyBtnReset();
+
     password = generatePassword();
 
     if (password){
@@ -232,29 +263,3 @@
   }
 
   generateBtn.addEventListener('click', writePassword);
-
-
-
-//COPY TO CLIPBOARD BUTTON
-  var copyBtn = document.querySelector('#copy-to-clipboard');
-  
-  copyBtn.addEventListener('click', function(){
-    var delay = 3000;
-    var duration = 1000;
-    var origBtnText = copyBtn.innerHTML;
-  
-    navigator.clipboard.writeText(password);
-    
-    copyBtn.style.width = window.getComputedStyle(copyBtn).getPropertyValue('width');
-    copyBtn.style.fontStyle = 'italic';
-    copyBtn.innerHTML = 'Copied!';
-    copyBtn.style.transition = 'color ' + duration + 'ms ease-in ' + delay + 'ms';
-    copyBtn.style.color = window.getComputedStyle(copyBtn).getPropertyValue('background-color');
-
-    setTimeout(
-      function(){
-        copyBtn.innerHTML = origBtnText;
-        copyBtn.removeAttribute('style');
-      },
-      delay + duration);
-  });
