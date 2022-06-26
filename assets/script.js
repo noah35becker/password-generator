@@ -263,7 +263,7 @@
     }
     else{
       passwordText.style.color = window.getComputedStyle(generateBtn).getPropertyValue('background-color');
-      passwordText.value = 'Error! You must check at least one type of character.';
+      passwordText.value = 'You must check at least one type of character.';
       updateSupplements(false);
     }
   }
