@@ -246,6 +246,8 @@
 
 
   function writePassword(){
+    generateBtn.innerHTML = 'Generate new password';
+    
     copyBtnReset();
 
     password = generatePassword();
