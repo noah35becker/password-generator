@@ -242,16 +242,17 @@
       document.querySelector('.pw-stats').innerHTML = stats;
 
       document.querySelector('.card-supplements').style.display = 'flex';
-    }else
+      generateBtn.innerHTML = 'Generate new password';
+    }else{
       document.querySelector('.card-supplements').style.display = 'none';
+      generateBtn.innerHTML = 'Generate password';
+    }
   }
   
 
 
-  function writePassword(){
-    generateBtn.innerHTML = 'Generate new password';
-    
-      copyBtnReset();
+  function writePassword(){    
+    copyBtnReset();
 
     password = generatePassword();
 
