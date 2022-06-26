@@ -270,6 +270,7 @@ header{
       border: 2px dashed #c0c7cf;
       border-radius: 6px;
       resize: none;
+      overflow: hidden;
     }
 
     .card-footer::after{
