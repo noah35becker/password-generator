@@ -62,20 +62,22 @@ I made use of multiple Git branches throughout the coding process. While this di
 
 Below are final screenshots of the final version of the web application:
 
-- [ALL screenshots (zipped)](assets/final-screenshots/ALL-final-screenshots.zip)
+The application's initial state
 <br/>
-
-- [The application's initial state](assets/final-screenshots/initial-state.png)
 <img src="assets/final-screenshots/initital-state.png" width="600"/>
 <br/>
 
-- [The application showing a generated password](assets/final-screenshots/sample-password.png)
+The application showing a generated password
+<br/>
 <img src="assets/final-screenshots/sample-password.png" width="600"/>
+<br/>
 
-- [The application showing an error message](assets/final-screenshots/error-msg.png)
+The application showing an error message
+<br/>
 <img src="assets/final-screenshots/error-msg.png" width="600"/>
-
+<br/>
 
 
 <br/>
+
 – Noah
