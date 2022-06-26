@@ -187,10 +187,33 @@
 
 
 
-//ADD GENERATEPASSWORD() TO BUTTON, WITH ERROR-CHECKING
+//ADD GENERATEPASSWORD() TO BUTTON, WITH ERROR-CHECKING + STATS / BUTTON UPDATING
   var generateBtn = document.querySelector('#generate');
   var passwordText = document.querySelector('#password');
   var password;
+
+  function updateSupplements(){
+    function charTypesString(){
+      const charTypes = [];
+      var index = 0;
+
+      if (document.querySelector('#lowercase').checked)
+        charTypes[index++] = 'lowercase';
+      if (document.querySelector('#uppercase').checked)
+        charTypes[index++] = 'uppercase';
+      if (document.querySelector('#numeric').checked)
+        charTypes[index++] = 'numeric';
+      if (document.querySelector('#special').checked)
+        charTypes[index] = 'special';
+
+      return charTypes.join(', ');
+    }
+        
+    var stats = password.length + ' characters (' + charTypesString() + ')';
+    document.querySelector('.pw-stats').innerHTML = stats;
+
+    document.querySelector('.card-supplements').style.display = 'flex';
+  }
 
   function writePassword(){
     password = generatePassword();
@@ -203,6 +226,8 @@
       passwordText.style.color = window.getComputedStyle(generateBtn).getPropertyValue('background-color');
       passwordText.value = 'Error! You must check at least one type of character.';
     }
+
+    updateSupplements();
   }
 
   generateBtn.addEventListener('click', writePassword);

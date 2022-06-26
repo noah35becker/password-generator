@@ -250,13 +250,13 @@ header{
   
   /*Password stats + copy to clipboard button (.card-supplements)*/
   .card-supplements{
-    display: flex;
     flex-wrap: nowrap;
     align-items: end;
     justify-content: space-between;
     position: relative;
-    bottom: 51px;
-    
+    bottom: 19px;
+    height: 0;
+    display: none; /*default; this is altered by js to flex when the Generate button is clicked*/
   }
 
   .pw-stats{
@@ -266,6 +266,8 @@ header{
     margin-top: 0;
     margin-bottom: 0;
     font-style: italic;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 
   .copy-to-clipboard-btn{
@@ -274,6 +276,8 @@ header{
     font-size: 17px;
     margin: 0;
     margin-right: 5px;
+    flex-grow: 0;
+    flex-shrink: 1;
   }
 
 
