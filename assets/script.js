@@ -34,20 +34,19 @@
 
   //Function: Fixing user input for number of characters
     function fixNumCharsInput(){
-      var origValue = sliderNumVal.value;
+      var origVal = sliderNumVal.value;
 
-      var adjValue = Math.round(origValue);
-      if (adjValue < minNumChars)
-        adjValue = minNumChars;
-      if (adjValue > maxNumChars)
-        adjValue = maxNumChars;
+      var adjVal = Math.round(origVal);
+      if (adjVal < minNumChars)
+        adjVal = minNumChars;
+      if (adjVal > maxNumChars)
+        adjVal = maxNumChars;
 
-      if (!(adjValue == origValue))
+      if (!(adjVal == origValue))
         sliderFlash();
       
-      
-      sliderNumVal.value = adjValue;
-      sliderItself.value = adjValue;
+      sliderNumVal.value = adjVal;
+      sliderItself.value = adjVal;
     }
 
   //When number value is adjusted, adjust the corresponding slider SIMULTANEOUSLY
@@ -68,6 +67,7 @@
       if (e.target === sliderNumVal || e.srcElement === sliderNumVal)
         fixNumCharsInput();
     });
+
     window.addEventListener('keyup',function(e){
       if (sliderNumVal === this.document.activeElement)
         switch (e.key){
@@ -83,37 +83,36 @@
         }
     });
 
-  //After user completes number input by typing, if number value is invalid,
-  //correct it to a valid value + adjust the slider accordingly
+  //After user completes number value input by typing, correct it if invalid
     sliderNumVal.addEventListener('blur', function(){
       fixNumCharsInput();
     });
 
 
-
-
-//THE SET OF POSSIBLE CHARACTERS
-  const CHARACTERS = {
-    lowercase: 'abcdefghijklmnopqrstuvwxyz',
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    numeric: '0123456789',
-    special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
-  }
-
-
+    
 //GENERATE PASSWORD FUNCTION
+
+  //The set of possible characters
+    const CHARACTERS = {
+      lowercase: 'abcdefghijklmnopqrstuvwxyz',
+      uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      numeric: '0123456789',
+      special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
+    }
+
+
+  //The function itself
   function generatePassword(){
 
     //Variables
       var password;
       var eligibleChars;
       
-      var passwordLength = sliderItself.value; //user validation is handled outside this function
+      var passwordLength = sliderItself.value;
       var useLowercase = document.querySelector('#lowercase').checked;
       var useUppercase = document.querySelector('#uppercase').checked;
       var useNumeric = document.querySelector('#numeric').checked;
       var useSpecial = document.querySelector('#special').checked;
-
 
     //Inner functions
       function atLeastOneCharType(){
@@ -137,27 +136,25 @@
         return output;
       }
 
-
       function build(){
         var output = '';
+        var randIndex;
 
         for (i = 0; i < passwordLength; i++){
-          var randIndex = Math.floor(Math.random() * eligibleChars.length);
+          randIndex = Math.floor(Math.random() * eligibleChars.length);
           output += eligibleChars.substring(randIndex, randIndex + 1);
         }
 
         return output;
       }
 
-
-      function allCharCategoriesPresent(){
-        
+      function allCharCategoriesPresent(){ 
         function checkAgainstBaseline(baseline){
           for (i = 0; i < password.length; i++)
             for (c = 0; c < baseline.length; c++)
               if (password.substring(i, i + 1) === baseline.substring(c, c + 1))
                 return true;
-                
+
           return false;
         }
 
@@ -173,7 +170,6 @@
         return true;
 
       }
-
 
     //Execute
       if (atLeastOneCharType()){
@@ -191,25 +187,22 @@
 
 
 
-//GET REFERENCES TO 'GENERATE PASSWORD' BUTTON
-var generateBtn = document.querySelector('#generate');
-
-//WRITE PASSWORD TO THE #password TEXTAREA
-function writePassword(){
-  
-  var password = generatePassword();
+//ADD GENERATEPASSWORD() TO BUTTON, WITH ERROR-CHECKING
+  var generateBtn = document.querySelector('#generate');
   var passwordText = document.querySelector('#password');
+  var password;
 
-  if (password){
-    passwordText.style.color = 'black';
-    passwordText.value = password;
+  function writePassword(){
+    password = generatePassword();
+
+    if (password){
+      passwordText.style.color = 'black';
+      passwordText.value = password;
+    }
+    else{
+      passwordText.style.color = window.getComputedStyle(generateBtn).getPropertyValue('background-color');
+      passwordText.value = 'Error! You must check at least one type of character.';
+    }
   }
-  else{
-    passwordText.value = 'Error! You must check at least one type of character.';
-    passwordText.style.color = window.getComputedStyle(generateBtn).getPropertyValue('background-color');
-  }
 
-}
-
-//ADD EVENT LISTENER TO THE GENERATE BUTTON
-generateBtn.addEventListener('click', writePassword);
+  generateBtn.addEventListener('click', writePassword);
