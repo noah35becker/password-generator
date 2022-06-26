@@ -212,7 +212,6 @@
     copyBtn.innerHTML = 'Copied!';
     copyBtn.style.transition = 'color ' + duration + 'ms ease-in ' + delay + 'ms';
     copyBtn.style.color = window.getComputedStyle(copyBtn).getPropertyValue('background-color');
-    console.log(copyBtn.style.color);
 
     setTimeout(copyBtnReset, delay + duration);
   });
