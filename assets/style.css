@@ -131,7 +131,7 @@ header{
 
     /*Types of characters*/
       .types-of-chars{
-        margin-bottom: 30px;
+        margin-bottom: 10px;
       }
 
       .types-of-chars h2{
@@ -139,14 +139,10 @@ header{
         margin-top: 0;
       }
 
-      .checkboxes-and-spacers{
+      .checkboxes-wrapper{
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;;
-      }
-
-      .checkboxes-and-spacers .spacer{
-        flex-basis: 1px;
+        justify-content: center;
       }
 
       .checkboxes{
@@ -245,11 +241,41 @@ header{
     display: inline-block;
     font-size: 22px;
     line-height: 22px;
-    margin: 16px 16px 16px 20px;
+    margin: 16px;
     padding: 14px 34px;
     text-align: center;
     cursor: pointer;
   }
+
+  
+  /*Password stats + copy to clipboard button (.card-supplements)*/
+  .card-supplements{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: end;
+    justify-content: space-between;
+    position: relative;
+    bottom: 51px;
+    
+  }
+
+  .pw-stats{
+    font-family: monospace;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: italic;
+  }
+
+  .copy-to-clipboard-btn{
+    background-color: #4388f7;
+    padding: 5px 15px;
+    font-size: 17px;
+    margin: 0;
+    margin-right: 5px;
+  }
+
 
 
 button[disabled]{
