@@ -64,12 +64,12 @@ Below are final screenshots of the final version of the web application:
 - [ALL screenshots (zipped)](assets/final-screenshots/ALL-final-screenshots.zip)
 <br/>
 - [The application's initial state](assets/final-screenshots/initital-state.png)
-<img src= assets/final-screenshots/initital-state.png width="300"/>
+<img src= assets/final-screenshots/initital-state.png width="600"/>
 <br/>
 - [The application showing a generated password](assets/final-screenshots/sample-password.png)
-<img src= assets/final-screenshots/sample-password.png width="300"/>
+<img src= assets/final-screenshots/sample-password.png width="600"/>
 - [The application showing an error message](assets/final-screenshots/error-msg.png)
-<img src= assets/final-screenshots/error-msg.png width="300"/>
+<img src= assets/final-screenshots/error-msg.png width="600"/>
 
 
 
