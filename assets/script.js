@@ -16,11 +16,17 @@
     function sliderFlash(){
       var activeElem = this.document.activeElement;
 
+      //If number value input was focused before sliderFlash(),
+      //mask the fact that it temporarily loses focus
+      if (activeElem === sliderNumVal)
+        sliderNumVal.style.outline = window.getComputedStyle(sliderNumVal,':focus-visible').getPropertyValue('outline');
+      
       sliderItself.focus();
       setTimeout(
         function(){
           activeElem.focus();
           sliderItself.blur();
+          sliderNumVal.removeAttribute('style'); //REMOVE the <losing-focus> masking described above
         },
         '200')
       ;
