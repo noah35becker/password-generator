@@ -42,7 +42,7 @@
       if (adjVal > maxNumChars)
         adjVal = maxNumChars;
 
-      if (!(adjVal == origValue))
+      if (!(adjVal == origVal))
         sliderFlash();
       
       sliderNumVal.value = adjVal;
