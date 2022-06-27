@@ -189,6 +189,8 @@ header{
         left: 10px;
         margin: 10px;
         line-height: 1.8;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .checkbox-wrapper label::before{
