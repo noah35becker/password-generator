@@ -67,21 +67,21 @@ Below are final screenshots of the final version of the web application:
 The application's initial state
 <br/>
 <br/>
-<img src="assets/final-screenshots/initital-state.png" width="600"/>
+<img src="assets/screenshots/initital-state.png" width="600"/>
 <br/>
 
 <br/>
 The application showing a generated password
 <br/>
 <br/>
-<img src="assets/final-screenshots/sample-password.png" width="600"/>
+<img src="assets/screenshots/sample-password.png" width="600"/>
 <br/>
 
 <br/>
 The application showing an error message
 <br/>
 <br/>
-<img src="assets/final-screenshots/error-msg.png" width="600"/>
+<img src="assets/screenshots/error-msg.png" width="600"/>
 <br/>
 
 
