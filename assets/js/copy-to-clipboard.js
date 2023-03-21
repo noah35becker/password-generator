@@ -14,8 +14,8 @@ export function copyBtnReset(){
 
 
 copyBtn.addEventListener('click', function(){
-    var delay = 3000; //milliseconds
-    var duration = 1000; //milliseconds
+    const delay = 3000; //milliseconds
+    const duration = 1000; //milliseconds
 
     navigator.clipboard.writeText(passwordText.value);
     

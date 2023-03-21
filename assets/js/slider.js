@@ -19,7 +19,7 @@ sliderItself.oninput = function(){
 
 // When number value is adjusted, at the moment that the corresponding slider is also adjusted, make its circle 'flash'
 function sliderFlash(){
-    var activeElem = document.activeElement;
+    const activeElem = document.activeElement;
 
     // If number value input was focused before sliderFlash(), mask the fact that it temporarily loses focus
     if (activeElem === sliderNumVal)
@@ -36,9 +36,9 @@ function sliderFlash(){
 
 // Fix user input for number of characters
 function fixNumCharsInput(){
-    var origVal = sliderNumVal.value;
+    const origVal = sliderNumVal.value;
 
-    var adjVal = Math.round(origVal);
+    let adjVal = Math.round(origVal);
     if (adjVal < minNumChars)
         adjVal = minNumChars;
     if (adjVal > maxNumChars)
@@ -55,7 +55,7 @@ function fixNumCharsInput(){
 // When number value is adjusted, adjust the corresponding slider SIMULTANEOUSLY
 // (only if number value is currently valid)
 sliderNumVal.oninput = function(){
-    var finalVal = this.value;
+    const finalVal = this.value;
 
     if (finalVal == Math.round(finalVal) && finalVal >= 8 && finalVal <= 128){
         sliderItself.value = finalVal;

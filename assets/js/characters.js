@@ -8,7 +8,7 @@ export const CHARACTERS = {
 
 
 export function getEligibleChars(lowercase, uppercase, numeric, special){
-    var output = '';
+    let output = '';
 
     if (lowercase)
         output += CHARACTERS.lowercase;

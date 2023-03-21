@@ -6,7 +6,7 @@ import {generateBtn} from './dom-elements.js';
 
 function charTypesString(lowercase, uppercase, numeric, special){
     const charTypes = [];
-    var index = 0;
+    let index = 0;
 
     if (lowercase)
         charTypes[index++] = 'lowercase';
@@ -23,7 +23,7 @@ function charTypesString(lowercase, uppercase, numeric, special){
 
 export function updateSupplements(display, pw, lowercase, uppercase, numeric, special){
     if (display){
-        var stats = pw.length + ' characters (' + charTypesString(lowercase, uppercase, numeric, special) + ')';
+        const stats = pw.length + ' characters (' + charTypesString(lowercase, uppercase, numeric, special) + ')';
         document.querySelector('.pw-stats').innerHTML = stats;
 
         document.querySelector('.card-supplements').style.display = 'flex';

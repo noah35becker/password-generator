@@ -14,10 +14,10 @@ function atLeastOneCharType(lowercase, uppercase, numeric, special){
 
 
 function build(eligibleChars){
-    var passwordLength = getPasswordLength();
+    const passwordLength = getPasswordLength();
 
-    var output = '';
-    var randIndex;
+    let output = '';
+    let randIndex;
 
     for (let i = 0; i < passwordLength; i++){
         randIndex = Math.floor(Math.random() * eligibleChars.length);
