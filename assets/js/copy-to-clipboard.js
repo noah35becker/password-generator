@@ -1,6 +1,6 @@
 
 // IMPORT
-import {passwordText} from './dom-elements.js';
+import {passwordText} from './dom-elements.js'; 
 
 
 const copyBtn = document.querySelector('#copy-to-clipboard');

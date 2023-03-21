@@ -3,7 +3,7 @@ export const CHARACTERS = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     numeric: '0123456789',
-    special: ' !"#$%&()*+,-./:;<=>?@[]^_`{|}~' + "'" + '\\'
+    special: `!"#$%&()*+,-./:;<=>?@[]^_{|}~'\`\\`
 }
 
 
