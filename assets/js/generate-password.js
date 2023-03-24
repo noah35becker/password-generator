@@ -2,7 +2,7 @@
 // IMPORTS
 import {getPasswordLength} from './slider.js';
 import {getEligibleChars} from './characters.js';
-import {updateSupplements} from './password-stats.js';
+import {updateStats} from './password-stats.js';
 import {copyBtnReset} from './copy-to-clipboard.js';
 import {generateBtn, passwordText} from './dom-elements.js';
 
@@ -77,11 +77,11 @@ function writePassword(lowercase, uppercase, numeric, special){
         const pw = generatePassword(lowercase, uppercase, numeric, special);
         passwordText.style.color = 'black';
         passwordText.value = pw;
-        updateSupplements(true, pw, lowercase, uppercase, numeric, special);
+        updateStats(true, pw, lowercase, uppercase, numeric, special);
     }else{
         passwordText.style.color = window.getComputedStyle(generateBtn).getPropertyValue('background-color');
         passwordText.value = 'You must check at least one type of character.';
-        updateSupplements(false);
+        updateStats(false);
     }
 }
 generateBtn.addEventListener('click', () => writePassword(

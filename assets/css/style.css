@@ -285,14 +285,14 @@ header{
   
 
   
-  /*Password stats + copy to clipboard button (.card-supplements)*/
-  .card-supplements{
+  /* Password stats + copy to clipboard button */
+  .stats-and-copy-btn-wrapper{
     align-items: end;
     justify-content: space-between;
     position: relative;
     bottom: 19px;
     height: 0;
-    display: none; /*default; this is altered by js to flex when the Generate button is clicked*/
+    display: none; /* default; this is altered by to `flex` when the Generate button is clicked */
   }
 
   .pw-stats{
@@ -321,7 +321,7 @@ header{
 
 /*MEDIA QUERIES FOR SCREENS OF DIFFERENT SIZES*/
   @media screen and (max-width: 750px){
-    .card-supplements{
+    .stats-and-copy-btn-wrapper{
       flex-wrap: wrap;
       justify-content: center;
       position: static;

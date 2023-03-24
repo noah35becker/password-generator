@@ -20,15 +20,15 @@ function charTypesString(lowercase, uppercase, numeric, special){
 }
 
 
-export function updateSupplements(display, pw, lowercase, uppercase, numeric, special){
+export function updateStats(display, pw, lowercase, uppercase, numeric, special){
     if (display){
         const stats = pw.length + ' characters (' + charTypesString(lowercase, uppercase, numeric, special) + ')';
         document.querySelector('.pw-stats').innerHTML = stats;
 
-        document.querySelector('.card-supplements').style.display = 'flex';
+        document.querySelector('.stats-and-copy-btn-wrapper').style.display = 'flex';
         generateBtn.innerHTML = 'Generate new password';
     }else{
-        document.querySelector('.card-supplements').style.display = 'none';
+        document.querySelector('.stats-and-copy-btn-wrapper').style.display = 'none';
         generateBtn.innerHTML = 'Generate password';
     }
 }
