@@ -6,16 +6,15 @@ import {generateBtn} from './dom-elements.js';
 
 function charTypesString(lowercase, uppercase, numeric, special){
     const charTypes = [];
-    let index = 0;
 
     if (lowercase)
-        charTypes[index++] = 'lowercase';
+        charTypes.push('lowercase');
     if (uppercase)
-        charTypes[index++] = 'uppercase';
+        charTypes.push('uppercase');
     if (numeric)
-        charTypes[index++] = 'numeric';
+        charTypes.push('numeric');
     if (special)
-        charTypes[index] = 'special';
+        charTypes.push('special');
 
     return charTypes.join(', ');
 }
