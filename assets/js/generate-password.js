@@ -1,18 +1,20 @@
 
 // IMPORTS
 import {getPasswordLength} from './slider.js';
-import {CHARACTERS, getEligibleChars} from './characters.js';
+import {getEligibleChars} from './characters.js';
 import {updateSupplements} from './password-stats.js';
 import {copyBtnReset} from './copy-to-clipboard.js';
 import {generateBtn, passwordText} from './dom-elements.js';
 
 
 
-function atLeastOneCharType(lowercase, uppercase, numeric, special){
+// Ensure that user has selected at least one char category
+function atLeastOneCharCategory(lowercase, uppercase, numeric, special){
     return lowercase || uppercase || numeric || special;
 }
 
 
+// Build a random password (not yet validated)
 function build(eligibleChars){
     const passwordLength = getPasswordLength();
 
@@ -24,30 +26,37 @@ function build(eligibleChars){
 }
 
 
+// Check that password contains at least one char of the given category
 function checkAgainstBaseline(pw, baseline){
-    for (let i = 0; i < pw.length; i++)
-        for (let c = 0; c < baseline.length; c++)
-            if (pw.substring(i, i + 1) === baseline.substring(c, c + 1))
-                return true;
-
-    return false;
+    switch (baseline){
+        case 'lowercase':
+            return /[a-z]/.test(pw);
+        case 'uppercase':
+            return /[A-Z]/.test(pw);
+        case 'numeric':
+            return /[0-9]/.test(pw);
+        case 'special':
+            return /\W/.test(pw);
+    }
 }
 
 
+// Confirm that each char category that the user selected is represented by at least one char in the password
 function allCharCategoriesPresent(pw, lowercase, uppercase, numeric, special){ 
-    if(lowercase && !checkAgainstBaseline(pw, CHARACTERS.lowercase))
+    if(lowercase && !checkAgainstBaseline(pw, 'lowercase'))
         return false;
-    if(uppercase && !checkAgainstBaseline(pw, CHARACTERS.uppercase))
+    if(uppercase && !checkAgainstBaseline(pw, 'uppercase'))
         return false;
-    if(numeric && !checkAgainstBaseline(pw, CHARACTERS.numeric))
+    if(numeric && !checkAgainstBaseline(pw, 'numeric'))
         return false;
-    if(special && !checkAgainstBaseline(pw, CHARACTERS.special))
+    if(special && !checkAgainstBaseline(pw, 'special'))
         return false;
     
     return true;
 }
 
 
+// Generate random password, validating that each char category that the user selected is represented by at least one char
 function generatePassword(lowercase, uppercase, numeric, special){
     let pw;
     const eligibleChars = getEligibleChars(lowercase, uppercase, numeric, special);
@@ -60,10 +69,11 @@ function generatePassword(lowercase, uppercase, numeric, special){
 }
 
 
+// Write random password to screen
 function writePassword(lowercase, uppercase, numeric, special){
     copyBtnReset();
 
-    if (atLeastOneCharType(lowercase, uppercase, numeric, special)){
+    if (atLeastOneCharCategory(lowercase, uppercase, numeric, special)){
         const pw = generatePassword(lowercase, uppercase, numeric, special);
         passwordText.style.color = 'black';
         passwordText.value = pw;

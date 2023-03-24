@@ -1,5 +1,5 @@
 
-export const CHARACTERS = {
+const CHARACTERS = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     numeric: '0123456789',
