@@ -1,8 +1,18 @@
 
 const sliderItself = document.querySelector('#number-of-chars-slider');
 const sliderNumVal = document.querySelector('#number-of-chars-number-input');
-const minNumChars = parseInt(sliderItself.getAttribute('min'));
-const maxNumChars = parseInt(sliderItself.getAttribute('max'));
+const MIN_NUM_CHARS = 8;
+const MAX_NUM_CHARS = 128;
+
+
+
+// On load, set min / max / value of slider
+sliderItself.setAttribute('min', MIN_NUM_CHARS);
+sliderItself.setAttribute('max', MAX_NUM_CHARS);
+sliderItself.setAttribute('value', MIN_NUM_CHARS);
+
+sliderNumVal.setAttribute('value', MIN_NUM_CHARS);
+
 
 
 // Get length of the password about to be generated
@@ -40,10 +50,10 @@ function fixNumCharsInput(){
     const origVal = sliderNumVal.value;
 
     let adjVal = Math.round(origVal);
-    if (adjVal < minNumChars)
-        adjVal = minNumChars;
-    if (adjVal > maxNumChars)
-        adjVal = maxNumChars;
+    if (adjVal < MIN_NUM_CHARS)
+        adjVal = MIN_NUM_CHARS;
+    if (adjVal > MAX_NUM_CHARS)
+        adjVal = MAX_NUM_CHARS;
 
     if (!(adjVal == origVal))
       sliderFlash();
@@ -58,7 +68,7 @@ function fixNumCharsInput(){
 sliderNumVal.oninput = function(){
     const finalVal = this.value;
 
-    if (finalVal == Math.round(finalVal) && finalVal >= 8 && finalVal <= 128){
+    if (finalVal == Math.round(finalVal) && finalVal >= MIN_NUM_CHARS && finalVal <= MAX_NUM_CHARS){
         sliderItself.value = finalVal;
         sliderFlash();
     }
@@ -79,11 +89,11 @@ window.addEventListener('keyup', function(e){  // up/down arrow keys
     if (sliderNumVal === this.document.activeElement)
         switch (e.key){
             case 'ArrowUp':
-                if (sliderNumVal.value > 128)
+                if (sliderNumVal.value > MAX_NUM_CHARS)
                     fixNumCharsInput();
                 break;
             case 'ArrowDown':
-                if (sliderNumVal.value < 8){
+                if (sliderNumVal.value < MIN_NUM_CHARS){
                     fixNumCharsInput();
                 }
                 break;
