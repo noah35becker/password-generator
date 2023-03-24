@@ -5,6 +5,7 @@ const minNumChars = parseInt(sliderItself.getAttribute('min'));
 const maxNumChars = parseInt(sliderItself.getAttribute('max'));
 
 
+// Get length of the password about to be generated
 export function getPasswordLength(){
     return sliderItself.value;
 }
