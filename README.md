@@ -1,84 +1,92 @@
 # Random Password Generator
-## Noah Becker
+[![License: GNU LGPLv3](https://img.shields.io/badge/License-GNU%20LGPLv3-informational.svg)](https://choosealicense.com/licenses/lgpl-3.0)
 
-### [Github repo](https://github.com/noah35becker/random-password-generator/)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
+    
 
-### [Live web application](https://noah35becker.github.io/random-password-generator/)
+## Repo
+[https://github.com/noah35becker/random-password-generator](https://github.com/noah35becker/random-password-generator)
+
+## Live web application
+[https://noah35becker.github.io/random-password-generator/](https://noah35becker.github.io/random-password-generator/)
+
+
+## Description
+This application generates random passwords. Password length and types of characters included are based on the user's selected criteria.
+
+
+<i><b>
+## Table of contents
+- [Features](#features)
+- [Credits](#credits)
+- [License](#license)
+- [Contributing](#contributing)
+- [Questions](#questions)
+- [Screenshots](#screenshots)
+
+</i></b>
+
+
+## Features
+- Interactive, animating slider for selecting password length
+- Number input that corresponds to / mutually updates along with the slider (user input is validated)
+- User-selected types of characters to include in a given password (an error message appears if no types are selected)
+- Password statistics for the random password currently on screen
+- A "Copy to clipboard" button, which animates upon click
+- Validation for generated passwords, ensuring that at least one character of each user-selected type is included
+
+
+## Credits
+
+### Creator
+- Noah Becker ([GitHub](https://github.com/noah35becker))
+
+
+
+## License
+
+[![License: GNU LGPLv3](https://img.shields.io/badge/License-GNU%20LGPLv3-informational.svg)](https://choosealicense.com/licenses/lgpl-3.0)
+
+Learn more about this license [here](https://choosealicense.com/licenses/lgpl-3.0).
+
+
+
+
+
+
+## Contributing
+Feel free to fork this project's [repo](https://github.com/noah35becker/random-password-generator), contribute code, and submit pull requests [here](https://github.com/noah35becker/random-password-generator/pulls)!
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
+
+Contributors to this project must follow all guidelines set forth by the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+
+
+
+## Questions
+My GitHub username is [noah35becker](https://github.com/noah35becker).
+
+If you have any questions, I'd be glad to hear from you—contact me at [noahbeckercoding@gmail.com](mailto:noahbeckercoding@gmail.com).
+
+
+
+## Screenshots
 <br/>
-************************************************************************
-
-<br/>
-<br/>
-
-This code completes the weekly challenge for Module #3 in Columbia's Coding Bootcamp.
-
-
-<br/>
-
-I have created a random password generator.
-
-
-<br/>
-
-The user first selects a password length between 8–128 characters, using either the interactive slider or its corresponding numeric input.
-
-- The slider and numeric input mutually update in real time
-- The slider is animated, whether updated directly (by dragging the slider itself) or indirectly (by adjusting the numeric input)
-- The numeric input is adjusted by either:
-    - typing in a number
-    - clicking the input's ↑/↓ arrows (which appear when it's in focus)
-    - pressing the ↑/↓ arrows on the keyboard (while the input is in focus)
-- The user's numeric input is thoroughly validated
-
-
-<br/>
-
-The user then selects which types of characters they'd like to include in the generated password.
-
-
-<br/>
-
-Lastly, the user clicks the "Generate password" button. A password appears that matches the specified criteria.
-
-- All generated passwords are guaranteed to contain at least one of each selected character type
-- If the user doesn't have any character types selected, an error message appears
-- As long as password generation was successful (i.e. the user had at least one character type selected):
-    - The "Generate password" button auto-updates to read "Generate new password"
-    - The password's "stats" (# of characters, types of characters included) appear on screen
-        - If the user begins to adjust settings in preparation for generating a new password, these stats, usefully, remain unchanged alongside the <em>current</em> password to which they apply
-    - A "Copy to clipboard" button appears, which animates upon click
-
-
-<br/>
-
-The web application uses a responsive layout that adapts to different viewports and devices.
-
-
-<br/>
-
-I made use of multiple Git branches throughout the coding process. While this didn't serve any technical purpose—I am the only programmer on this project—it gave me another opportunity to practice observing a good Git workflow.
-
-
-<br/>
-
-Below are final screenshots of the final version of the web application:
-
-<br/>
-The application's initial state
+Initial state
 <br/>
 <br/>
 <img src="assets/screenshots/initital-state.png" width="600"/>
 <br/>
 
 <br/>
-The application showing a generated password
+Displaying a generated password
 <br/>
 <br/>
 <img src="assets/screenshots/sample-password.png" width="600"/>
 <br/>
 
 <br/>
-The application showing an error message
+Displaying an error message
 <br/>
 <br/>
 <img src="assets/screenshots/error-msg.png" width="600"/>
@@ -86,5 +94,3 @@ The application showing an error message
 
 
 <br/>
-
-– Noah
