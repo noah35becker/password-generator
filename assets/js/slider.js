@@ -71,7 +71,13 @@ function fixNumCharsInput(){
 sliderNumVal.oninput = function(){
     const finalVal = this.value;
 
-    if (finalVal == Math.round(finalVal) && finalVal >= MIN_NUM_CHARS && finalVal <= MAX_NUM_CHARS){
+    if (
+            finalVal == Math.round(finalVal)
+        &&
+            finalVal >= MIN_NUM_CHARS
+        &&
+            finalVal <= MAX_NUM_CHARS
+    ){
         sliderItself.value = finalVal;
         sliderFlash();
     }
@@ -84,7 +90,7 @@ sliderNumVal.oninput = function(){
 window.addEventListener('click', function(e){  // clicking
     e = e || window.event;
     
-    if (e.target === sliderNumVal || e.srcElement === sliderNumVal)
+    if (e.target === sliderNumVal)
         fixNumCharsInput();
 });
 
@@ -102,6 +108,6 @@ window.addEventListener('keyup', function(e){  // up/down arrow keys
         }
 });
 
-sliderNumVal.addEventListener('blur', function(){  // typing
+sliderNumVal.addEventListener('blur', () => {  // typing
     fixNumCharsInput();
 });
