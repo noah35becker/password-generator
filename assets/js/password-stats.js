@@ -22,8 +22,8 @@ function charTypesString(lowercase, uppercase, numeric, special){
 
 export function updateStats(display, pw, lowercase, uppercase, numeric, special){
     if (display){
-        const stats = pw.length + ' characters (' + charTypesString(lowercase, uppercase, numeric, special) + ')';
-        document.querySelector('.pw-stats').innerHTML = stats;
+        document.querySelector('.pw-stats').innerHTML =
+            `${pw.length} characters (${charTypesString(lowercase, uppercase, numeric, special)})`;
 
         document.querySelector('.stats-and-copy-btn-wrapper').style.display = 'flex';
         generateBtn.innerHTML = 'Generate new password';
