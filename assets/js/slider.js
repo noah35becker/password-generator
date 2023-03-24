@@ -94,18 +94,12 @@ window.addEventListener('click', function(e){  // clicking
         fixNumCharsInput();
 });
 
-window.addEventListener('keyup', function(e){  // up/down arrow keys
-    if (sliderNumVal === this.document.activeElement)
-        switch (e.key){
-            case 'ArrowUp':
-                if (sliderNumVal.value > MAX_NUM_CHARS)
-                    fixNumCharsInput();
-                break;
-            case 'ArrowDown':
-                if (sliderNumVal.value < MIN_NUM_CHARS)
-                    fixNumCharsInput();
-                break;
-        }
+sliderNumVal.addEventListener('keyup', function(e){  // up/down arrow keys
+    switch (e.key){
+        case 'ArrowUp':
+        case 'ArrowDown':
+            fixNumCharsInput();
+    }
 });
 
 sliderNumVal.addEventListener('blur', () => {  // typing
