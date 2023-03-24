@@ -24,23 +24,26 @@ export function getPasswordLength(){
 // When slider itself is adjusted, adjust the corresponding number value simultaneously
 sliderItself.oninput = function(){
     sliderNumVal.value = this.value;
-    sliderItself.blur();
+    sliderFlash();
 };
 
 
-// When number value is adjusted, at the moment that the corresponding slider is also adjusted, make its circle 'flash'
+// Make the slider's circle "flash" when its value is adjusted
 function sliderFlash(){
     const activeElem = document.activeElement;
 
     // If number value input was focused before sliderFlash(), mask the fact that it temporarily loses focus
     if (activeElem === sliderNumVal)
-        sliderNumVal.style.outline = window.getComputedStyle(sliderNumVal,':focus-visible').getPropertyValue('outline');
+        sliderNumVal.style.outline = window.getComputedStyle(sliderNumVal, ':focus-visible').getPropertyValue('outline');
     
     sliderItself.focus();
-    setTimeout(function(){
-        activeElem.focus();
+
+    setTimeout(() => {
+        if (activeElem === sliderNumVal){
+            sliderNumVal.removeAttribute('style'); // remove masking of number value input losing focus (described above)
+            activeElem.focus();
+        }
         sliderItself.blur();
-        sliderNumVal.removeAttribute('style'); // remove masking of number value input losing focus (described above)
     }, 200);
 }
 
@@ -54,16 +57,16 @@ function fixNumCharsInput(){
         adjVal = MIN_NUM_CHARS;
     if (adjVal > MAX_NUM_CHARS)
         adjVal = MAX_NUM_CHARS;
-
-    if (!(adjVal == origVal))
-      sliderFlash();
     
     sliderNumVal.value = adjVal;
     sliderItself.value = adjVal;
+
+    if (!(adjVal == origVal))
+      sliderFlash();
 }
 
 
-// When number value is adjusted, adjust the corresponding slider SIMULTANEOUSLY
+// When number value is adjusted, adjust the corresponding slider simultaneously
 // (only if number value is currently valid)
 sliderNumVal.oninput = function(){
     const finalVal = this.value;
@@ -93,9 +96,8 @@ window.addEventListener('keyup', function(e){  // up/down arrow keys
                     fixNumCharsInput();
                 break;
             case 'ArrowDown':
-                if (sliderNumVal.value < MIN_NUM_CHARS){
+                if (sliderNumVal.value < MIN_NUM_CHARS)
                     fixNumCharsInput();
-                }
                 break;
         }
 });
