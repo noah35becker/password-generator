@@ -17,12 +17,8 @@ function build(eligibleChars){
     const passwordLength = getPasswordLength();
 
     let output = '';
-    let randIndex;
-
-    for (let i = 0; i < passwordLength; i++){
-        randIndex = Math.floor(Math.random() * eligibleChars.length);
-        output += eligibleChars.substring(randIndex, randIndex + 1);
-    }
+    for (let i = 0; i < passwordLength; i++)
+        output += eligibleChars[Math.floor(Math.random() * eligibleChars.length)];
 
     return output;
 }
